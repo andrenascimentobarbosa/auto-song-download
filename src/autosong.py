@@ -12,6 +12,9 @@ def convert_file(file):
     try:
         video = VideoFileClip(file)
         audio = video.audio
+        file_mp3 = file.replace(' ', '_')
+        file_mp3 = file.replace("'", "")
+        file_mp3 = file.lower()
         file_mp3 = file.replace('mp4', 'mp3')
 
         # writing the audio file
