@@ -4,9 +4,11 @@ from pytube import YouTube
 import sys
 
 
+# download video
 def Download(link):
     yt = YouTube(link)
-    yt = yt.streams.get_highest_resolution()
+    yt = yt.streams.filter(only_audio=True).first()   # // for audio only
+    #yt = yt.streams.get_highest_resolution()     // for video
     try:
         yt.download()
     except Exception as e:
@@ -15,6 +17,7 @@ def Download(link):
     print('done.')
 
 
+# read list of songs
 def main(file):
     with open(file, 'r') as f:
         lines = f.readlines()
