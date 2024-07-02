@@ -15,24 +15,17 @@ def Download(link):
     print('done.')
 
 
-'''
 def main(file):
     with open(file, 'r') as f:
         lines = f.readlines()
         for l in lines:
             Download(l)
-'''
-
-
-def main(link):
-    Download(link)
 
 
 if __name__ == "__main__":
-    #if len(sys.argv) != 2:
-        #print('./script.py songlist.txt')
+    if len(sys.argv) != 2:
+        print('./script.py songlist.txt')
     
-    #songs = sys.argv[1]
-    songs = 'https://youtu.be/-wZl_ZhnVg4?si=bdxI-JQQG5bI2pqT'
+    songs = sys.argv[1]
     main(songs)
 
