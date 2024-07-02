@@ -1,19 +1,43 @@
 #!/usr/bin/python3
 
 from pytube import YouTube
+from moviepy.editor import VideoFileClip
 import sys
+import os
+
+path_dir = r'/home/andre/auto-song-download/src/songs'
+
+
+def convert_file(file):
+    try:
+        video = VideoFileClip(file)
+        audio = video.audio
+        file_mp3 = file.replace('mp4', 'mp3')
+
+        # writing the audio file
+        audio.write_audiofile(file_mp3)
+
+        # closing video and audio clips
+        audio.close()
+        video.close()
+
+        # remove the mp4 file
+        os.remove(file)
+
+        print(f'Converted and removed {file}')
+    except Exception as e:
+        print('Error:', e)
 
 
 # download video
 def Download(link):
-    yt = YouTube(link)
-    yt = yt.streams.filter(only_audio=True).first()   # // for audio only
-    #yt = yt.streams.get_highest_resolution()     // for video
     try:
-        yt.download()
+        yt = YouTube(link)
+        yt = yt.streams.get_highest_resolution()
+        downloaded_file = yt.download(path_dir)
+        convert_file(downloaded_file)
     except Exception as e:
         print('Error:', e)
-
     print('done.')
 
 
@@ -22,13 +46,13 @@ def main(file):
     with open(file, 'r') as f:
         lines = f.readlines()
         for l in lines:
-            Download(l)
+            file = Download(l.strip())
 
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print('./script.py songlist.txt')
-    
-    songs = sys.argv[1]
-    main(songs)
+    else:
+        songs = sys.argv[1]
+        main(songs)
 
