@@ -12,6 +12,8 @@ from moviepy.editor import VideoFileClip
 import sys
 import os
 
+
+# path to the download
 path_dir_songs = r'/home/andre/auto-song-download/src/v3/songs'
 path_dir_videos = r'/home/andre/auto-song-download/src/v3/videos'
 
