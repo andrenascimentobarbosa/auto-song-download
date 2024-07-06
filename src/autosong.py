@@ -14,8 +14,8 @@ import os
 
 
 # path to the download
-path_dir_songs = r'/home/andre/auto-song-download/src/v3/songs'
-path_dir_videos = r'/home/andre/auto-song-download/src/v3/videos'
+path_dir_songs = r'/home/andre/auto-song-download/src/songs'
+path_dir_videos = r'/home/andre/auto-song-download/src/videos'
 
 
 def convert_file(file):
