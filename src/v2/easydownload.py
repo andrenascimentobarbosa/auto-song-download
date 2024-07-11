@@ -1,14 +1,17 @@
 #!/usr/bin/python3
 
-from moviepy.editor import *
 import traceback
 import sys
 import os
 
 
+# path to downloads
+
 path_mp4 = r'/home/andre/Videos'
 path_mp3 = r'/home/andre/Music'
 
+
+# download mp3 file
 
 def download_mp3(file):
     try:
@@ -24,6 +27,8 @@ def download_mp3(file):
         print(traceback.format_exc())
     
 
+# download mp4 file
+
 def download_mp4(file):
     try:
         with open(file, 'rb') as f:
@@ -37,6 +42,8 @@ def download_mp4(file):
         print('Error: ', e)
         print(traceback.format_exc())
 
+
+# main
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
