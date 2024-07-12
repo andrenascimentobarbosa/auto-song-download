@@ -13,6 +13,34 @@ path_mp3 = r'/home/andre/Music'
 
 # download mp3 file
 
+
+def requirements():
+    print("""
+    Select your OS:
+    [1] Windows
+    [2] Linux
+    [3] Mac
+            """)
+    the_OS = input(': ')
+    if the_OS == 1:
+        print('Installing yt-dlp...')
+        os.system('winget install yt-dlp')
+    elif the_OS == 2:
+        print('If you are a Linux user, you need to install manually yt-dlp.')
+        check = input('Run script [Y/n]: ').lower().strip()
+        if check == 'y':
+            continue
+        else:
+            sys.exit(1)
+    elif the_OS == 3:
+        print('Mac users need to install manually yt-dlp.')
+        check = input('Run script [Y/n]: ').lower().strip()
+        if check == 'y':
+            continue
+        else:
+            sys.exit(1)
+
+
 def download_mp3(file):
     try:
         with open(file, 'r') as f:
