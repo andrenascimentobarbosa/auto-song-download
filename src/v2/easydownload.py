@@ -29,14 +29,14 @@ def requirements():
         print('If you are a Linux user, you need to install manually yt-dlp.')
         check = input('Run script [Y/n]: ').lower().strip()
         if check == 'y':
-            continue
+            pass
         else:
             sys.exit(1)
     elif the_OS == 3:
         print('Mac users need to install manually yt-dlp.')
         check = input('Run script [Y/n]: ').lower().strip()
         if check == 'y':
-            continue
+            pass
         else:
             sys.exit(1)
 
