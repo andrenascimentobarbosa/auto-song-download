@@ -23,6 +23,15 @@ if not os.path.exists(path):
     os.makedirs(path)
 
 try:
+    with open(url, 'r') as f:
+        lines = f.readlines()
+        for line in lines:
+            url = line
+            if format == 'mp3':
+                os.system(f'yt-dlp -x --audio-format {format} -o "{path}/%(title)s.%(ext)s" {url}')
+            elif format == 'mp4':
+                os.system(f'yt-dlp -o "{path}/%(title)s.%(ext)s" {url}')
+except FileNotFoundError:
     if format == 'mp3':
         os.system(f'yt-dlp -x --audio-format {format} -o "{path}/%(title)s.%(ext)s" {url}')
     elif format == 'mp4':
